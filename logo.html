@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+
+    <title>TYRO</title>
+
+    <style>
+        #logo {
+            margin-top: 20%;
+            font-family: 'Quicksand', sans-serif;
+            text-align: center;
+            font-size: 7em;
+        }
+
+        #O {
+            width: 80px;
+            animation: rotation ease 2s;
+            transform-origin: 50% 56%;
+        }
+
+        @keyframes rotation {
+            from { transform: rotate(90deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .animated {
+            animation-duration: 3s;
+         }
+         
+         @keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+         }
+         
+         .fadeIn {
+            animation-name: fadeIn;
+         }
+    </style>
+</head>
+
+<body>
+    <div id="logo" class="animated fadeIn">TYR<img src="O.png" id="O"></div>
+</body>
+
+</html>
