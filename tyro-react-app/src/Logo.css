@@ -1,0 +1,38 @@
+#logo {
+  margin-top: 20%;
+  font-family: "Quicksand", sans-serif;
+  text-align: center;
+  font-size: 7em;
+}
+
+#O {
+  width: 80px;
+  animation: rotation ease 2s;
+  transform-origin: 50% 56%;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animated {
+  animation-duration: 3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
