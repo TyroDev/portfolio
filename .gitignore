@@ -6,3 +6,5 @@ node_modules
 *.txt
 .env
 .sass-cache
+
+/logo-assets
