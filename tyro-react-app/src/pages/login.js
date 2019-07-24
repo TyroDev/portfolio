@@ -4,7 +4,7 @@ export class Login extends Component {
     render() {
         return (
             <div>
-                <h1>Login</h1>
+                <h1>Instead of Login just add something...Rusty</h1>
             </div>
         )
     }
