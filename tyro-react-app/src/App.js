@@ -2,7 +2,8 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Logo from './components/Logo';
+// Components:
+import Navbar from "./components/Navbar";
 
 // Pages:
 import home from "./pages/home";
@@ -13,15 +14,15 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Switch>
-          <Route exact path="/" component={home} />
-          <Route exact path="/login" component={login} />
-          <Route exact path="/signup" component={signup} />
-        </Switch>
+        <Navbar />
+        <div className="container">
+          <Switch>
+            <Route exact path="/" component={home} />
+            <Route exact path="/login" component={login} />
+            <Route exact path="/signup" component={signup} />
+          </Switch>
+        </div>
       </Router>
-
-      <Logo />
-
     </div>
   );
 }
