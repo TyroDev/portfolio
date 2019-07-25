@@ -18,8 +18,9 @@ html, body {
 /* Logo styles */
 
 #logo {
-  margin-top: 15%;
+  margin-top: 20%;
   min-width: 300px;
+  max-width: 100%;
   font-family: "Quicksand", sans-serif;
   text-align: center;
   font-size: 7em;
