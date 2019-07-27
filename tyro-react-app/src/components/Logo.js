@@ -4,7 +4,7 @@ export class Logo extends Component {
   render() {
     return (
       <div id="logo" className="animated fadeIn">
-        TYR<img src={require("../O.png")} id="O" alt="logo" />
+        TYR<img src={require("../images/O.png")} id="O" alt="logo" />
       </div>
     );
   }

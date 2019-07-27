@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import withStyles from '@material-ui/core/styles/withStyles';
 
-export class Signup extends Component {
+const styles = {
+
+}
+
+export class signup extends Component {
     render() {
         return (
             <div>
-                <h1>Signup</h1>
+                <h1>signup</h1>
             </div>
         )
     }
 }
 
-export default Signup;
+export default withStyles(styles)(signup);
