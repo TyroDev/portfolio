@@ -10,7 +10,13 @@ import { sizeWidth } from "@material-ui/system";
 
 const styles = {
   form: {
-    textAlign: "center"
+    textAlign: "center",
+  },
+  font: {
+    fontFamily: "Quicksand",
+  },
+  image: {
+    margin: '20px auto 20px auto'
   }
 };
 
@@ -21,11 +27,11 @@ class login extends Component {
       <Grid container className={`${classes.form} animated fadeIn`}>
         <Grid item sm />
         <Grid item sm>
-          <img src={AppIcon} width={80} alt="power button" />
+          <img src={AppIcon} className={classes.image} width={80} alt="power button" />
           <Typography
             variant="h4"
-            className={classes.pageTitle}
-            color="textSecondary"
+            className={classes.font}
+            color="primary"
           >
             Login
           </Typography>

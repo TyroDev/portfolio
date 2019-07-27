@@ -31,6 +31,10 @@ const theme = createMuiTheme({
   },
   typography: {
     userNextVariants: true,
+    fontFamily: {
+      primary: "Roboto",
+      secondary: "Quicksand",
+    }
   }
 });
 
