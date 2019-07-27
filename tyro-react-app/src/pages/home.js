@@ -34,7 +34,7 @@ export class Home extends Component {
               <p>Profile...</p>
             </div>
           </Grid>
-          <Grid item sm={8} xs={12}>
+          <Grid item sm={8} xs={12} className="animated fadeIn">
             {recentPostsMarkup}
           </Grid>
         </Grid>
