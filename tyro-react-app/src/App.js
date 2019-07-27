@@ -12,6 +12,8 @@ import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
 
+import Credits from "./components/Credits";
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -47,6 +49,7 @@ class App extends Component {
               </Switch>
             </div>
           </Router>
+          <Credits />
         </div>
       </MuiThemeProvider>
     );

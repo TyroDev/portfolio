@@ -40,6 +40,21 @@ a {
   transform-origin: 50% 56%;
 }
 
+#credits {
+  position: fixed;
+  bottom: 20px;
+  left: 57px;
+  color: rgb(172, 172, 172);
+  font-weight: 100;
+  font-size: 10pt;
+}
+
+#profile {
+  position: fixed;
+  top: 80px;
+  left: 20px;
+}
+
 @keyframes rotation {
   from {
     transform: rotate(90deg);
