@@ -51,8 +51,8 @@ a {
 
 #profile {
   position: fixed;
-  top: 80px;
-  left: 20px;
+  height: 60vh;
+  min-width: 280px;
 }
 
 @keyframes rotation {
