@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import Logo from "../components/Logo";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
-import Post from '../components/Post';
+import Post from "../components/Post";
 
 export class Home extends Component {
   state = {
     posts: null
   };
+
   componentDidMount() {
     axios
       .get("/posts")
@@ -20,17 +21,19 @@ export class Home extends Component {
   }
 
   render() {
-      let recentPostsMarkup = this.state.posts ? (
-          this.state.posts.map(post => <Post post={post}/>)
-      ) : <p>Loading...</p>
+    let recentPostsMarkup = this.state.posts ? (
+      this.state.posts.map(post => <Post post={post} />)
+    ) : (
+      <p>Loading...</p>
+    );
     return (
       <div>
         <Grid container spacing={10}>
-          <Grid item sm={8} xs={12}>
-            {recentPostsMarkup}
-          </Grid>
           <Grid item sm={4} xs={12}>
             <p>Profile...</p>
+          </Grid>
+          <Grid item sm={8} xs={12}>
+            {recentPostsMarkup}
           </Grid>
         </Grid>
         <Logo />
