@@ -6,35 +6,82 @@ import AppIcon from "../images/O.png";
 // MUI stuff
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { sizeWidth } from "@material-ui/system";
+import TextField from "@material-ui/core/TextField";
 
 const styles = {
   form: {
-    textAlign: "center",
+    textAlign: "center"
   },
   font: {
-    fontFamily: "Quicksand",
+    fontFamily: "Quicksand"
   },
   image: {
-    margin: '20px auto 20px auto'
+    margin: "20px auto 20px auto"
   }
 };
 
 class login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: "",
+      loading: false,
+      errors: {}
+    };
+  }
+
+  handleSubmit = event => {
+    console.log("hi");
+  };
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
   render() {
     const { classes } = this.props;
     return (
       <Grid container className={`${classes.form} animated fadeIn`}>
         <Grid item sm />
         <Grid item sm>
-          <img src={AppIcon} className={classes.image} width={80} alt="power button" />
+          <img
+            src={AppIcon}
+            className={classes.image}
+            width={80}
+            alt="power button"
+          />
           <Typography
             variant="h4"
             className={classes.font}
-            color="primary"
+            color="textSecondary"
           >
             Login
           </Typography>
+          <form noValidate onSubmit={this.handleSubmit}>
+            <TextField
+              id="email"
+              name="email"
+              type="email"
+              label="Email"
+              className={classes.textField}
+              value={this.state.email}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <TextField
+              id="password"
+              name="password"
+              type="password"
+              label="Password"
+              className={classes.textField}
+              value={this.state.password}
+              onChange={this.handleChange}
+              fullWidth
+            />
+          </form>
         </Grid>
         <Grid item sm />
       </Grid>
