@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Logo from "../components/Logo";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import Post from "../components/Post";
@@ -38,7 +37,6 @@ export class Home extends Component {
             {recentPostsMarkup}
           </Grid>
         </Grid>
-        <Logo />
       </div>
     );
   }

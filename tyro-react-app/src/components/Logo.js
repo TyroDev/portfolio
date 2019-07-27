@@ -8,6 +8,6 @@ export class Logo extends Component {
       </div>
     );
   }
-}
+} 
 
 export default Logo;

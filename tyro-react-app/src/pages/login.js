@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
-import AppIcon from "../images/O.png";
+import Logo from "../components/Logo";
 
 // MUI stuff
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const styles = {
   form: {
     textAlign: "center"
   },
   font: {
-    fontFamily: "Quicksand"
+    fontFamily: "Quicksand",
+    margin: "40px auto 20px auto",
   },
-  image: {
-    margin: "20px auto 20px auto"
+  button: {
+    margin: "40px auto auto auto"
   }
 };
 
@@ -47,12 +49,6 @@ class login extends Component {
       <Grid container className={`${classes.form} animated fadeIn`}>
         <Grid item sm />
         <Grid item sm>
-          <img
-            src={AppIcon}
-            className={classes.image}
-            width={80}
-            alt="power button"
-          />
           <Typography
             variant="h4"
             className={classes.font}
@@ -81,6 +77,13 @@ class login extends Component {
               onChange={this.handleChange}
               fullWidth
             />
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+            >
+              Submit
+            </Button>
           </form>
         </Grid>
         <Grid item sm />
