@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // MUI stuff
 import Grid from "@material-ui/core/Grid";
@@ -21,8 +22,8 @@ const styles = {
     margin: "40px auto auto auto"
   },
   customError: {
-    color: 'tomato',
-    fontSize: '0.8rem',
+    color: "tomato",
+    fontSize: "0.8rem",
     marginTop: 20
   }
 };
@@ -122,6 +123,11 @@ class login extends Component {
             >
               Submit
             </Button>
+            <p>
+              <small>
+                Don't have an account? Sign-up <Link to="/signup">here</Link>
+              </small>
+            </p>
           </form>
         </Grid>
         <Grid item sm />
