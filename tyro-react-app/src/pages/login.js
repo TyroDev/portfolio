@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = {
   form: {
@@ -19,12 +20,16 @@ const styles = {
     margin: "40px auto 20px auto"
   },
   button: {
-    margin: "40px auto auto auto"
+    margin: "40px auto auto auto",
+    position: 'relative',
   },
   customError: {
     color: "tomato",
     fontSize: "0.8rem",
     marginTop: 20
+  },
+  progress: {
+    position: 'absolute',
   }
 };
 
@@ -120,8 +125,12 @@ class login extends Component {
               variant="contained"
               color="primary"
               className={classes.button}
+              disabled={loading}
             >
               Submit
+              {loading && (
+                <CircularProgress size={30} className={classes.progress} />
+              )}
             </Button>
             <p>
               <small>
