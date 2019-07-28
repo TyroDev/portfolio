@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 // MUI stuff
 import {
-    Grid,
-    Typography,
-    TextField,
-    Button,
-    CircularProgress,
-    withStyles,
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  CircularProgress,
+  withStyles
 } from "@material-ui/core";
 
 const styles = {
@@ -23,7 +23,7 @@ const styles = {
   },
   button: {
     margin: "40px auto auto auto",
-    position: 'relative',
+    position: "relative"
   },
   customError: {
     color: "tomato",
@@ -31,7 +31,7 @@ const styles = {
     marginTop: 20
   },
   progress: {
-    position: 'absolute',
+    position: "absolute"
   }
 };
 
@@ -41,6 +41,8 @@ class signup extends Component {
     this.state = {
       email: "",
       password: "",
+      confirmPassword: "",
+      handle: "",
       loading: false,
       errors: {}
     };
@@ -51,14 +53,16 @@ class signup extends Component {
     this.setState({
       loading: true
     });
-    const userData = {
+    const newUserData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      confirmPassword: this.state.confirmPassword,
+      handle: this.state.handle
     };
     axios
-      .post("/signup", userData)
+      .post("/signup", newUserData)
       .then(res => {
-        console.log(res.data);
+        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
         this.setState({
           loading: false
         });
@@ -117,6 +121,30 @@ class signup extends Component {
               onChange={this.handleChange}
               fullWidth
             />
+            <TextField
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              label="Confirm Password"
+              className={classes.textField}
+              helperText={errors.confirmPassword}
+              error={errors.confirmPassword ? true : false}
+              value={this.state.confirmPassword}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <TextField
+              id="handle"
+              name="handle"
+              type="text"
+              label="Handle"
+              className={classes.textField}
+              helperText={errors.handle}
+              error={errors.handle ? true : false}
+              value={this.state.handle}
+              onChange={this.handleChange}
+              fullWidth
+            />
             {errors.general && (
               <Typography variant="body2" className={classes.customError}>
                 {errors.general}
@@ -136,7 +164,7 @@ class signup extends Component {
             </Button>
             <p>
               <small>
-                Don't have an account? Sign-up <Link to="/signup">here</Link>
+                Already have an account? Login <Link to="/login">here</Link>
               </small>
             </p>
           </form>
