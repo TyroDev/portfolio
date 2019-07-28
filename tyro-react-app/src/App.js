@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Logo from "./components/Logo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
-import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
 // Components:
 import Navbar from "./components/Navbar";
@@ -36,7 +35,7 @@ const theme = createMuiTheme({
       primary: "Roboto",
       secondary: "Quicksand",
     }
-  }
+  },
 });
 
 class App extends Component {
