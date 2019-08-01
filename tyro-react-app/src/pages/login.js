@@ -48,6 +48,12 @@ class login extends Component {
     };
   }
 
+componentWillReceiveProps(nextProps) {
+  if (nextProps.UI.errors){
+    this.setState({ errors: nextProps.UI.errors });
+  }
+};
+
   handleSubmit = event => {
     event.preventDefault();
     const userData = {
@@ -64,7 +70,7 @@ class login extends Component {
   };
 
   render() {
-    const { classes, UI: { loading: } } = this.props;
+    const { classes, UI: { loading } } = this.props;
     const { errors } = this.state;
     return (
       <Grid container className={`${classes.form} animated fadeIn`}>
