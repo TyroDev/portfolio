@@ -6,22 +6,18 @@ export const loginUser = (userData, history) => dispatch => {
   axios
     .post("/login", userData)
     .then(res => {
-      localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
-      this.setState({
-        loading: false
-      });
       const FBIdToken = `Bearer ${res.data.token}`;
       localStorage.setItem("FBIdToken", FBIdToken);
       axios.defaults.headers.common["Authorization"] = FBIdToken;
       dispatch(getUserData());
-      dispatch( { type: CLEAR_ERRORS} );
+      dispatch({ type: CLEAR_ERRORS });
       history.push("/");
     })
     .catch(err => {
-        dispatch({
-            type: SET_ERRORS,
-            payload: err.response.data
-        })
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
     });
 };
 
