@@ -12,13 +12,16 @@ import MuiLink from "@material-ui/core/Link";
 import { LocationOn, CalendarToday } from "@material-ui/icons";
 import LinkIcon from "@material-ui/icons/Link";
 
-const styles = (theme) => ({
+const styles = theme => ({
+  login: {
+    textAlign: "center"
+  },
   paper: {
     padding: 20,
     position: "fixed",
     minWidth: 280,
     minHeight: 340,
-    left: 20,
+    left: 20
   },
   profile: {
     "& .image-wrapper": {
@@ -36,8 +39,8 @@ const styles = (theme) => ({
       objectFit: "cover",
       maxWidth: "100%",
       borderRadius: "50%",
-      border: '10px solid',
-      borderColor: theme.palette.primary.main,
+      border: "10px solid",
+      borderColor: theme.palette.primary.main
     },
     "& .profile-details": {
       textAlign: "center",
@@ -58,7 +61,8 @@ const styles = (theme) => ({
       }
     }
   },
-  button: {
+  buttons: {
+      margin: "auto auto",
     textAlign: "center",
     "& a": {
       margin: "20px 10px"
@@ -121,10 +125,10 @@ class Profile extends Component {
         </Paper>
       ) : (
         <Paper className={classes.paper}>
-          <Typography variant="body2" align="center">
-            No profile found, please login again.
-          </Typography>
-          <div className="button">
+          <div className={classes.buttons}>
+            <Typography className="login" variant="body2">
+              No profile found,<br />please login or signup:
+            </Typography>
             <Button
               variant="contained"
               color="primary"
@@ -133,14 +137,9 @@ class Profile extends Component {
             >
               Login
             </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              component={Link}
-              to="/signup"
-            >
+            <MuiLink component={Link} to={`/signup`} color="primary">
               Signup
-            </Button>
+            </MuiLink>
           </div>
         </Paper>
       )
