@@ -49,12 +49,11 @@ a {
   font-size: 10pt;
 }
 
-#profile {
+/* #profile {
   position: fixed;
-  height: 60vh;
   min-width: 280px;
   left: 20px;
-}
+} */
 
 @keyframes rotation {
   from {
