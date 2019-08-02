@@ -1,19 +1,10 @@
-import React, { Component } from "react";
-
-// MUI stuff:
+import React from "react";
 import { IconButton, Tooltip } from "@material-ui/core";
-import { Edit } from "@material-ui/icons";
 
-export class MyButton extends Component {
-  render() {
-    return (
-      <Tooltip title="Edit profile picture" placement="top">
-        <IconButton onClick={this.handleEditPicture} className="imageChange">
-          <Edit color="primary" />
-        </IconButton>
-      </Tooltip>
-    );
-  }
-}
-
-export default MyButton;
+export default ({ children, onClick, tip, btnClassName, tipClassName }) => (
+  <Tooltip title={tip} className={tipClassName} placement="top">
+    <IconButton onClick={onClick} className={btnClassName}>
+      {children}
+    </IconButton>
+  </Tooltip>
+);

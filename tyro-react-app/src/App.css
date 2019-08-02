@@ -11,6 +11,10 @@ html, body {
   max-width: 1200px;
 }
 
+.nav-container svg {
+  color: #fff;
+}
+
 a {
   text-decoration: none;
 }
@@ -21,7 +25,7 @@ a {
   /* margin-top: 20%; */
   position: fixed;
   left: 30px;
-  bottom: 0;
+  bottom: -20px;
   margin-bottom: 30px;
   width: 300px;
   /* max-width: 100%; */
@@ -38,7 +42,7 @@ a {
 
 #credits {
   position: fixed;
-  bottom: 20px;
+  bottom: 0px;
   left: 57px;
   color: rgb(172, 172, 172);
   font-weight: 100;
