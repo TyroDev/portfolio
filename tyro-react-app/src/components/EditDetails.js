@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { editUserDetails } from "../redux/actions/userActions";
+import MyButton from "../util/MyButton";
 
 // Redux stuff:
 import { connect } from "react-redux";
@@ -9,8 +10,6 @@ import { connect } from "react-redux";
 import {
   withStyles,
   Button,
-  IconButton,
-  Tooltip,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -76,11 +75,9 @@ class EditDetails extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <Tooltip title="Edit details" placement="top">
-          <IconButton onClick={this.handleOpen} className={classes.editBio}>
+        <MyButton tip="Edit Details" onClick={this.handleOpen} btnClassName={classes.editBio}>
             <Edit color="primary" />
-          </IconButton>
-        </Tooltip>
+        </MyButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

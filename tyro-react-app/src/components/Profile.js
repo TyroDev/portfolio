@@ -2,7 +2,8 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
-import EditDetails from './EditDetails';
+import EditDetails from "./EditDetails";
+import MyButton from "../util/MyButton";
 
 // Redux stuff:
 import { connect } from "react-redux";
@@ -14,8 +15,6 @@ import {
   Paper,
   Typography,
   Button,
-  IconButton,
-  Tooltip
 } from "@material-ui/core";
 import MuiLink from "@material-ui/core/Link";
 import {
@@ -35,7 +34,7 @@ const styles = theme => ({
     position: "fixed",
     width: 280,
     minHeight: 340,
-    left: 20,
+    left: 20
   },
   profile: {
     "& .image-wrapper": {
@@ -121,11 +120,13 @@ class Profile extends Component {
         <Paper className={classes.paper}>
           <div className={classes.profile}>
             <div className="image-wrapper">
-              <Tooltip title="logout" placement="top">
-                <IconButton onClick={this.handleLogout} className="logout">
-                  <KeyboardReturn color="primary" />
-                </IconButton>
-              </Tooltip>
+              <MyButton
+                tip="Logout"
+                onClick={this.handleLogout}
+                btnClassName="logout"
+              >
+                <KeyboardReturn color="primary" />
+              </MyButton>
               <img className="profile-image" src={imageUrl} alt="profile" />
               <input
                 type="file"
@@ -133,11 +134,13 @@ class Profile extends Component {
                 hidden="hidden"
                 onChange={this.handleImageChange}
               />
-              <Tooltip title="Edit profile picture" placement="top">
-                <IconButton onClick={this.handleEditPicture} className="imageChange">
-                  <Edit color="primary" />
-                </IconButton>
-              </Tooltip>
+              <MyButton
+                tip="Edit profile picture"
+                onClick={this.handleEditPicture}
+                btnClassName="imageChange"
+              >
+                <Edit color="primary" />
+              </MyButton>
             </div>
             <hr />
             <div className="profile-details">
