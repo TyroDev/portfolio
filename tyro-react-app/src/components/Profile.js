@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 
 // Redux stuff:
 import { connect } from "react-redux";
+import { logoutUser, uploadImage } from "../redux/actions/userActions";
 
 // MUI stuff:
 import {
@@ -16,7 +17,12 @@ import {
   Tooltip
 } from "@material-ui/core";
 import MuiLink from "@material-ui/core/Link";
-import { LocationOn, CalendarToday, Edit } from "@material-ui/icons";
+import {
+  LocationOn,
+  CalendarToday,
+  Edit,
+  KeyboardReturn
+} from "@material-ui/icons";
 import LinkIcon from "@material-ui/icons/Link";
 
 const styles = theme => ({
@@ -34,10 +40,15 @@ const styles = theme => ({
     "& .image-wrapper": {
       textAlign: "center",
       position: "relative",
-      "& button": {
+      "& .imageChange": {
         position: "absolute",
         top: "80%",
         left: "70%"
+      },
+      "& .logout": {
+        position: "absolute",
+        top: "80%",
+        left: "15%"
       }
     },
     "& .profile-image": {
@@ -80,11 +91,18 @@ const styles = theme => ({
 class Profile extends Component {
   handleImageChange = event => {
     const image = event.target.files[0];
+    const formData = new FormData();
+    formData.append("image", image, image.name);
+    this.props.uploadImage(formData);
   };
 
   handleEditPicture = () => {
     const fileInput = document.querySelector("#imageInput");
     fileInput.click();
+  };
+
+  handleLogout = () => {
+    this.props.logoutUser();
   };
 
   render() {
@@ -102,6 +120,11 @@ class Profile extends Component {
         <Paper className={classes.paper}>
           <div className={classes.profile}>
             <div className="image-wrapper">
+              <Tooltip title="logout" placement="top">
+                <IconButton onClick={this.handleLogout} className="logout">
+                  <KeyboardReturn color="primary" />
+                </IconButton>
+              </Tooltip>
               <img className="profile-image" src={imageUrl} alt="profile" />
               <input
                 type="file"
@@ -109,11 +132,8 @@ class Profile extends Component {
                 hidden="hidden"
                 onChange={this.handleImageChange}
               />
-              <Tooltip title="Edit profile picture" placement="right-end">
-                <IconButton
-                  onClick={this.handleEditPicture}
-                  className={classes.buttons}
-                >
+              <Tooltip title="Edit profile picture" placement="top">
+                <IconButton onClick={this.handleEditPicture} className="imageChange">
                   <Edit color="primary" />
                 </IconButton>
               </Tooltip>
@@ -185,11 +205,18 @@ class Profile extends Component {
 
 Profile.propTypes = {
   classes: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(Profile));
+const mapActionsToProps = { logoutUser, uploadImage };
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(Profile));
