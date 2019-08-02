@@ -35,7 +35,7 @@ const styles = theme => ({
     position: "fixed",
     minWidth: 280,
     minHeight: 340,
-    left: 20
+    left: 20,
   },
   profile: {
     "& .image-wrapper": {
