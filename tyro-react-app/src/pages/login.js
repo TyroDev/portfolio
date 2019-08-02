@@ -48,11 +48,11 @@ class login extends Component {
     };
   }
 
-componentWillReceiveProps(nextProps) {
-  if (nextProps.UI.errors){
-    this.setState({ errors: nextProps.UI.errors });
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
   }
-};
 
   handleSubmit = event => {
     event.preventDefault();
@@ -70,7 +70,10 @@ componentWillReceiveProps(nextProps) {
   };
 
   render() {
-    const { classes, UI: { loading } } = this.props;
+    const {
+      classes,
+      UI: { loading }
+    } = this.props;
     const { errors } = this.state;
     return (
       <Grid container className={`${classes.form} animated fadeIn`}>
@@ -145,13 +148,16 @@ login.propTypes = {
   UI: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
   UI: state.UI
 });
 
 const mapActionsToProps = {
   loginUser
-}
+};
 
-export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(login));
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(login));

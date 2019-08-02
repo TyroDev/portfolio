@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import AppIcon from '../images/icon.png';
 
 // MUI stuff
 import {
@@ -12,6 +13,10 @@ import {
   CircularProgress,
   withStyles
 } from "@material-ui/core";
+
+// Redux stuff
+import { connect } from 'react-redux';
+import { logoutUser } from '../redux/actions/userActions';
 
 const styles = {
   form: {
@@ -176,7 +181,15 @@ class signup extends Component {
 }
 
 signup.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  UI: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(signup);
+const mapStateToProps = (state) => ({
+  user: state.user,
+  UI: state.UI
+})
+
+export default connect(mapStateToProps, { logoutUser })(withStyles(styles)(signup));
