@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
+import PropTypes from "prop-types";
+
+// Redux stuff:
+import { connect } from 'react-redux';
 
 // Material UI stuff:
 import AppBar from "@material-ui/core/AppBar";
@@ -34,4 +38,12 @@ export class Navbar extends Component {
   }
 }
 
-export default withStyles(styles)(Navbar);
+Navbar.propTypes = {
+  authenticated: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  authenticated: state.user.authenticated
+});
+
+export default connect(mapStateToProps)(withStyles(styles)(Navbar));

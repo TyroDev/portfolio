@@ -33,7 +33,7 @@ const styles = theme => ({
   paper: {
     padding: 20,
     position: "fixed",
-    minWidth: 280,
+    width: 280,
     minHeight: 340,
     left: 20,
   },
