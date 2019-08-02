@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+import EditDetails from './EditDetails';
 
 // Redux stuff:
 import { connect } from "react-redux";
@@ -48,7 +49,7 @@ const styles = theme => ({
       "& .logout": {
         position: "absolute",
         top: "80%",
-        left: "15%"
+        left: "12%"
       }
     },
     "& .profile-image": {
@@ -171,6 +172,7 @@ class Profile extends Component {
               <CalendarToday color="primary" />{" "}
               <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
             </div>
+            <EditDetails />
           </div>
         </Paper>
       ) : (
