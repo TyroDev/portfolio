@@ -7,9 +7,16 @@ import dayjs from "dayjs";
 import { connect } from "react-redux";
 
 // MUI stuff:
-import { withStyles, Paper, Typography, Button } from "@material-ui/core";
+import {
+  withStyles,
+  Paper,
+  Typography,
+  Button,
+  IconButton,
+  Tooltip
+} from "@material-ui/core";
 import MuiLink from "@material-ui/core/Link";
-import { LocationOn, CalendarToday } from "@material-ui/icons";
+import { LocationOn, CalendarToday, Edit } from "@material-ui/icons";
 import LinkIcon from "@material-ui/icons/Link";
 
 const styles = theme => ({
@@ -62,7 +69,7 @@ const styles = theme => ({
     }
   },
   buttons: {
-      margin: "auto auto",
+    margin: "auto auto",
     textAlign: "center",
     "& a": {
       margin: "20px 10px"
@@ -71,6 +78,15 @@ const styles = theme => ({
 });
 
 class Profile extends Component {
+  handleImageChange = event => {
+    const image = event.target.files[0];
+  };
+
+  handleEditPicture = () => {
+    const fileInput = document.querySelector("#imageInput");
+    fileInput.click();
+  };
+
   render() {
     const {
       classes,
@@ -87,6 +103,20 @@ class Profile extends Component {
           <div className={classes.profile}>
             <div className="image-wrapper">
               <img className="profile-image" src={imageUrl} alt="profile" />
+              <input
+                type="file"
+                id="imageInput"
+                hidden="hidden"
+                onChange={this.handleImageChange}
+              />
+              <Tooltip title="Edit profile picture" placement="right-end">
+                <IconButton
+                  onClick={this.handleEditPicture}
+                  className={classes.buttons}
+                >
+                  <Edit color="primary" />
+                </IconButton>
+              </Tooltip>
             </div>
             <hr />
             <div className="profile-details">
@@ -127,7 +157,9 @@ class Profile extends Component {
         <Paper className={classes.paper}>
           <div className={classes.buttons}>
             <Typography className="login" variant="body2">
-              No profile found,<br />please login or signup:
+              No profile found,
+              <br />
+              please login or signup:
             </Typography>
             <Button
               variant="contained"
