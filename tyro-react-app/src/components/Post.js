@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import DeletePost from "./DeletePost";
+import PostDialog from './PostPost';
 
 // MUI stuff:
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
@@ -117,6 +118,7 @@ class Post extends Component {
             <Chat color="primary" />
           </MyButton>
           <span>{commentCount} Comments</span>
+          <PostDialog post={postId} userHandle={userHandle}/>
         </CardContent>
       </Card>
     );
