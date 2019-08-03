@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import MyButton from "../util/MyButton";
+import PostPost from './PostPost';
 
 // Redux stuff:
 import { connect } from "react-redux";
@@ -13,7 +14,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 // Icons:
-import { Add, Home, Notifications } from "@material-ui/icons";
+import { Home, Notifications } from "@material-ui/icons";
 
 const styles = {
   nav: {
@@ -29,9 +30,7 @@ export class Navbar extends Component {
         <Toolbar className={`${classes.nav} nav-container`}>
           {authenticated ? (
             <Fragment>
-              <MyButton tip="Create a post">
-                <Add />
-              </MyButton>
+              <PostPost />  
               <Link to="/">
                 <MyButton tip="Home">
                   <Home />
