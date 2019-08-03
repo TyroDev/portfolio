@@ -49,7 +49,7 @@ export default function(state = initialUserState, action) {
     case UNLIKE_POST:
       return {
         ...state,
-        like: state.likes.filter(like => like.postId !== action.payload.postId)
+        likes: state.likes.filter(like => like.postId !== action.payload.postId)
       };
     default:
       return state;

@@ -15,7 +15,7 @@ export const getPosts = () => (dispatch) => {
       .catch(() => {
         dispatch({
           type: SET_POSTS,
-          payload: []
+          payload: {}
         });
       });
   };
@@ -35,13 +35,13 @@ export const likePost = postId => dispatch => {
 
 // Unlike Post
 export const unlikePost = postId => dispatch => {
-  axios
-    .get(`/post/${postId}/unlike`)
-    .then(res => {
-      dispatch({
-        type: UNLIKE_POST,
-        payload: res.data
-      });
-    })
-    .catch(err => console.log(err));
-};
+    axios
+      .get(`/post/${postId}/unlike`)
+      .then(res => {
+        dispatch({
+          type: UNLIKE_POST,
+          payload: res.data
+        });
+      })
+      .catch(err => console.log(err));
+  };

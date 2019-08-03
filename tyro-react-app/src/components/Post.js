@@ -7,7 +7,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 // MUI stuff:
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
 import { Chat, FavoriteBorder } from "@material-ui/icons";
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 import { connect } from "react-redux";
 import { likePost, unlikePost } from "../redux/actions/dataActions";
@@ -33,9 +33,11 @@ class Post extends Component {
     if (
       this.props.user.likes &&
       this.props.user.likes.find(like => like.postId === this.props.post.postId)
-    )
+    ) {
       return true;
-    else return false;
+    } else {
+      return false;
+    }
   };
 
   likePost = () => {
