@@ -21,15 +21,15 @@ import { Close, Add } from "@material-ui/icons";
 
 const styles = theme => ({
   closeButton: {
-      position: 'absolute',
-      left: '90%',
-      top: '10%'
+    position: "absolute",
+    left: "90%",
+    top: "10%"
   },
   submitButton: {
-      position: "relative"
+    position: "relative"
   },
   progressSpinner: {
-      position: 'absolute'
+    position: "absolute"
   }
 });
 
@@ -40,12 +40,35 @@ class PostPost extends Component {
     errors: {}
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({
+        errors: nextProps.UI.errors
+      });
+    };
+    if (!nextProps.UI.errors && !nextProps.UI.loading) {
+        this.setState({ body: ''});
+        this.handleClose();
+    }
+  }
+
   handleOpen = () => {
     this.setState({ open: true });
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, errors: {} });
+  };
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.postPost({ body: this.state.body });
   };
 
   render() {
