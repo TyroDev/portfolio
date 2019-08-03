@@ -88,3 +88,8 @@ export const deletePost = postId => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+// Clear posting errors
+export const clearErrors = () => dispatch => {
+    dispatch({ type: CLEAR_ERRORS });
+};

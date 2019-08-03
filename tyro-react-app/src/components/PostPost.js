@@ -4,7 +4,7 @@ import MyButton from "../util/MyButton";
 
 // Redux stuff:
 import { connect } from "react-redux";
-import { postPost } from "../redux/actions/dataActions";
+import { postPost, clearErrors } from "../redux/actions/dataActions";
 
 // MUI stuff:
 import {
@@ -22,10 +22,12 @@ const styles = theme => ({
   closeButton: {
     position: "absolute",
     left: "90%",
-    top: "10%"
+    top: "5%"
   },
   submitButton: {
-    position: "relative"
+    position: "relative",
+    float: "right",
+    margin: "20px 0 10px 0"
   },
   progressSpinner: {
     position: "absolute"
@@ -44,10 +46,13 @@ class PostPost extends Component {
       this.setState({
         errors: nextProps.UI.errors
       });
-    };
+    }
     if (!nextProps.UI.errors && !nextProps.UI.loading) {
-        this.setState({ body: ''});
-        this.handleClose();
+      this.setState({
+        body: "",
+        open: false,
+        errors: {}
+      });
     }
   }
 
@@ -56,6 +61,7 @@ class PostPost extends Component {
   };
 
   handleClose = () => {
+    this.props.clearErrors();
     this.setState({ open: false, errors: {} });
   };
 
@@ -102,7 +108,7 @@ class PostPost extends Component {
                 name="body"
                 type="text"
                 multiline
-                rows="3"
+                rows="2"
                 placeholder="New post"
                 error={errors.body ? true : false}
                 helperText={errors.body}
@@ -134,6 +140,7 @@ class PostPost extends Component {
 
 PostPost.propTypes = {
   postPost: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired
 };
 
@@ -143,5 +150,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { postPost }
+  { postPost, clearErrors }
 )(withStyles(styles)(PostPost));
