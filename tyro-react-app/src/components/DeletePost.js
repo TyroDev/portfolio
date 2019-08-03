@@ -37,12 +37,14 @@ class DeletePost extends Component {
   };
 
   render() {
+    const { classes } = this.props; 
+    
     return (
       <Fragment>
         <MyButton
           tip="Delete Post"
           onClick={this.handleOpen}
-          className="deleteButton"
+          btnClassName={classes.deleteButton}
         >
           <DeleteOutline />
         </MyButton>
