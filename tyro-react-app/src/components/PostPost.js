@@ -14,7 +14,6 @@ import {
   DialogTitle,
   DialogContent,
   TextField,
-  DialogActions,
   CircularProgress
 } from "@material-ui/core";
 import { Close, Add } from "@material-ui/icons";
