@@ -17,30 +17,109 @@ import {
   DialogActions,
   CircularProgress
 } from "@material-ui/core";
-import { Edit } from "@material-ui/icons";
+import { Close, Add } from "@material-ui/icons";
 
 const styles = theme => ({
-    editBio: {
-      position: "fixed",
-      top: 80,
-      left: 290,
-    },
+  closeButton: {
+      position: 'absolute',
+      left: '90%',
+      top: '10%'
+  },
+  submitButton: {
+      position: "relative"
+  },
+  progressSpinner: {
+      position: 'absolute'
+  }
 });
 
 class PostPost extends Component {
   state = {
-    bio: '',
-    website: '',
-    location: '',
-    open: false
+    open: false,
+    body: "",
+    errors: {}
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  render() {
+    const { errors } = this.state;
+    const {
+      classes,
+      UI: { loading }
+    } = this.props;
+
+    return (
+      <Fragment>
+        <MyButton onClick={this.handleOpen} tip="Post">
+          <Add />
+        </MyButton>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          fullWidth
+          maxWidth="sm"
+        >
+          <MyButton
+            tip="Close"
+            onClick={this.handleClose}
+            btnClassName={classes.closeButton}
+          >
+            <Close />
+          </MyButton>
+          <DialogTitle>Say it like you mean it!</DialogTitle>
+          <DialogContent>
+            <form onSubmit={this.handleSubmit}>
+              <TextField
+                name="body"
+                type="text"
+                multiline
+                rows="3"
+                placeholder="New post"
+                error={errors.body ? true : false}
+                helperText={errors.body}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.submitButton}
+                disabled={loading}
+              >
+                Submit
+                {loading && (
+                  <CircularProgress
+                    size={30}
+                    className={classes.progressSpinner}
+                  />
+                )}
+              </Button>
+            </form>
+          </DialogContent>
+        </Dialog>
+      </Fragment>
+    );
   }
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
 }
 
-export default PostPost
+PostPost.propTypes = {
+  postPost: PropTypes.func.isRequired,
+  UI: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  UI: state.UI
+});
+
+export default connect(
+  mapStateToProps,
+  { postPost }
+)(withStyles(styles)(PostPost));
