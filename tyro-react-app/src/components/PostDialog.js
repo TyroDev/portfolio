@@ -20,9 +20,31 @@ import {
   Grid,
   Typography
 } from "@material-ui/core";
-import { Close } from "@material-ui/icons";
+import { Close, UnfoldMore } from "@material-ui/icons";
 
-const styles = {};
+const styles = theme => ({
+  invisibleSeparator: {
+    border: "none",
+    margin: 4
+  },
+  profileImage: {
+    maxWidth: 200,
+    height: 200,
+    borderRadius: "50%",
+    objectFit: "cover"
+  },
+  dialogContent: {
+    padding: 20
+  },
+  closeButton: {
+    position: "absolute",
+    left: "90%"
+  },
+  expandButton: {
+    position: "absolute",
+    left: "90%"
+  }
+});
 
 class PostDialog extends Component {
   state = {
@@ -49,10 +71,64 @@ class PostDialog extends Component {
         commentCount,
         userImage,
         userHandle
-      }
+      },
+      UI: { loading }
     } = this.props;
 
-    return <div />;
+    const dialogMarkup = loading ? (
+      <CircularProgress size={100} />
+    ) : (
+      <Grid container spacing={16}>
+        <Grid item sm={5}>
+          <img src={userImage} alt="Profile" className={classes.profileImage} />
+        </Grid>
+        <Grid item sm={7}>
+          <Typography
+            component={Link}
+            color="primary"
+            variant="h6"
+            to={`/users/${userHandle}`}
+          >
+            @{userHandle}
+          </Typography>
+          <hr className={classes.invisibleSeparator} />
+          <Typography variant="body2" color="textSecondary">
+            {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
+          </Typography>
+          <hr className={classes.invisibleSeparator} />
+          <Typography variant="body1">{body}</Typography>
+        </Grid>
+      </Grid>
+    );
+
+    return (
+      <Fragment>
+        <MyButton
+          onClick={this.handleOpen}
+          tip="Expand post"
+          tipClassName={classes.expandButton}
+        >
+          <UnfoldMore color="primary" />
+        </MyButton>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          fullWidth
+          maxWidth="sm"
+        >
+          <MyButton
+            tip="Close"
+            onClick={this.handleClose}
+            tipClassName={classes.closeButton}
+          >
+            <Close />
+          </MyButton>
+          <DialogContent className={classes.dialogContent}>
+            {dialogMarkup}
+          </DialogContent>
+        </Dialog>
+      </Fragment>
+    );
   }
 }
 
@@ -69,9 +145,9 @@ const mapStateToProps = state => ({
   UI: state.UI
 });
 
-const mapActionsToProps = state => ({
+const mapActionsToProps = {
   getPost
-});
+};
 
 export default connect(
   mapStateToProps,
