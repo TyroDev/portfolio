@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import MyButton from "../../util/MyButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import Comments from './Comments';
 
 // Redux stuff:
 import { connect } from "react-redux";
@@ -25,11 +26,16 @@ const styles = theme => ({
     border: "none",
     margin: 4
   },
+  visibleSeparator: {
+    width: '100%',
+    borderBottom: '1px solid rgba(0, 0, 0, 0.1)'
+  },
   profileImage: {
-    maxWidth: 200,
-    height: 200,
+    width: 100,
+    height: 100,
     borderRadius: "50%",
-    objectFit: "cover"
+    objectFit: "cover",
+    border: '6px solid #a6ce39'
   },
   dialogContent: {
     padding: 20
@@ -73,7 +79,8 @@ class PostDialog extends Component {
         likeCount,
         commentCount,
         userImage,
-        userHandle
+        userHandle,
+        comments
       },
       UI: { loading }
     } = this.props;
@@ -84,10 +91,10 @@ class PostDialog extends Component {
       </div>
     ) : (
       <Grid container spacing={16}>
-        <Grid item sm={5}>
+        <Grid item sm={3}>
           <img src={userImage} alt="Profile" className={classes.profileImage} />
         </Grid>
-        <Grid item sm={7}>
+        <Grid item sm={9}>
           <Typography
             component={Link}
             color="primary"
@@ -109,6 +116,8 @@ class PostDialog extends Component {
           </MyButton>
           <span>{commentCount} Comments</span>
         </Grid>
+        <hr className={classes.visibleSeparator} />
+        <Comments comments={comments} />
       </Grid>
     );
 
