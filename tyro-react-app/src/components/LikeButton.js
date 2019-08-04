@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import DeletePost from "./DeletePost";
-import PostDialog from "./PostDialog";
 
 // MUI stuff:
-import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
-import { Chat, FavoriteBorder } from "@material-ui/icons";
+import { FavoriteBorder } from "@material-ui/icons";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
 import { connect } from "react-redux";

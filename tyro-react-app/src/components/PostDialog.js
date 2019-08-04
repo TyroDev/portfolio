@@ -20,7 +20,8 @@ import {
   Grid,
   Typography
 } from "@material-ui/core";
-import { Close, UnfoldMore } from "@material-ui/icons";
+import { Chat, Close, UnfoldMore } from "@material-ui/icons";
+import LikeButton from "./LikeButton";
 
 const styles = theme => ({
   invisibleSeparator: {
@@ -104,6 +105,12 @@ class PostDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
+          <LikeButton postId={postId} />
+          <span>{likeCount} likes</span>
+          <MyButton tip="Comments">
+            <Chat color="primary" />
+          </MyButton>
+          <span>{commentCount} Comments</span>
         </Grid>
       </Grid>
     );
