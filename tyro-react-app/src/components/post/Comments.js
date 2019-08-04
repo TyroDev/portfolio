@@ -4,13 +4,20 @@ import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
 // MUI stuff:
-import {
-  withStyles,
-  Grid,
-  Typography
-} from "@material-ui/core";
+import { withStyles, Grid, Typography } from "@material-ui/core";
 
-const styles = theme => ({
+const styles = {
+  commentImage: {
+    width: 100,
+    height: 100,
+    borderRadius: "50%",
+    objectFit: 'cover',
+    border: "6px solid #a6ce39",
+    marginLeft: 44
+  },
+  commentData: {
+    marginLeft: 20
+  },
   invisibleSeparator: {
     border: "none",
     margin: 4
@@ -18,25 +25,16 @@ const styles = theme => ({
   visibleSeparator: {
     width: "100%",
     borderBottom: "1px solid rgba(0"
-  },
-  commentImage: {
-    width: 100,
-    height: 100,
-    objectFit: "cover",
-    borderRadius: "50%",
-    border: '6px solid #a6ce39'
-  },
-  commentData: {
-    marginLeft: 20
   }
-});
+};
 
 class Comments extends Component {
   render() {
-    const { comments, classes } = this.props;
+    const { classes, comments } = this.props;
+    console.log(comments);
     return (
       <Grid container>
-        {comments.map(comment => {
+        {comments.map((comment, index) => {
           const { body, userHandle, createdAt, userImage } = comment;
           return (
             <Fragment key={createdAt}>
@@ -46,7 +44,7 @@ class Comments extends Component {
                     <img
                       src={userImage}
                       alt="comment"
-                      btnClassName={classes.commentImage}
+                      className={classes.commentImage}
                     />
                   </Grid>
                   <Grid item sm={8}>
@@ -60,7 +58,7 @@ class Comments extends Component {
                         {userHandle}
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
-                          {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
+                        {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
                       </Typography>
                       <hr className={classes.invisibleSeparator} />
                       <Typography variant="body1">{body}</Typography>
@@ -68,7 +66,7 @@ class Comments extends Component {
                   </Grid>
                 </Grid>
               </Grid>
-              <hr className={classes.visibleSeparator} />
+              { index !== comments.length -1 && <hr className={classes.visibleSeparator} />}
             </Fragment>
           );
         })}
@@ -82,4 +80,3 @@ Comments.propTypes = {
 };
 
 export default withStyles(styles)(Comments);
-
