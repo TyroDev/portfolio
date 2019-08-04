@@ -4,6 +4,7 @@ import MyButton from "../../util/MyButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import Comments from './Comments';
+import CommentForm from './CommentForm';
 
 // Redux stuff:
 import { connect } from "react-redux";
@@ -117,6 +118,7 @@ class PostDialog extends Component {
           <span>{commentCount} Comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
+        <CommentForm postId={postId} />
         <Comments comments={comments} />
       </Grid>
     );
