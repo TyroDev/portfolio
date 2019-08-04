@@ -13,7 +13,7 @@ import { Chat } from "@material-ui/icons";
 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 const styles = {
   card: {

@@ -2,8 +2,8 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
-import MyButton from "../util/MyButton";
-import PostPost from './PostPost';
+import MyButton from "../../util/MyButton";
+import PostPost from '../post/PostPost';
 
 // Redux stuff:
 import { connect } from "react-redux";

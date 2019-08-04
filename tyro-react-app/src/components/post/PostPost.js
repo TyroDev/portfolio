@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 // Redux stuff:
 import { connect } from "react-redux";
-import { postPost, clearErrors } from "../redux/actions/dataActions";
+import { postPost, clearErrors } from "../../redux/actions/dataActions";
 
 // MUI stuff:
 import {

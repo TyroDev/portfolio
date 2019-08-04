@@ -7,9 +7,9 @@ import { FavoriteBorder } from "@material-ui/icons";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
 import { connect } from "react-redux";
-import { likePost, unlikePost } from "../redux/actions/dataActions";
+import { likePost, unlikePost } from "../../redux/actions/dataActions";
 import PropTypes from "prop-types";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 const styles = {};
 
