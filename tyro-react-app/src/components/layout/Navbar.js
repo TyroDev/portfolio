@@ -3,18 +3,17 @@ import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import MyButton from "../../util/MyButton";
-import PostPost from '../post/PostPost';
+import PostPost from "../post/PostPost";
+import Notifications from "./Notifications";
 
 // Redux stuff:
 import { connect } from "react-redux";
 
 // Material UI stuff:
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
+import { AppBar, Toolbar, Button }  from "@material-ui/core";
 
 // Icons:
-import { Home, Notifications } from "@material-ui/icons";
+import { Home } from "@material-ui/icons";
 
 const styles = {
   nav: {
@@ -30,15 +29,13 @@ export class Navbar extends Component {
         <Toolbar className={`${classes.nav} nav-container`}>
           {authenticated ? (
             <Fragment>
-              <PostPost />  
+              <PostPost />
               <Link to="/">
                 <MyButton tip="Home">
                   <Home />
                 </MyButton>
               </Link>
-              <MyButton tip="Notifications">
-                <Notifications />
-              </MyButton>
+              <Notifications />
             </Fragment>
           ) : (
             <Fragment>
