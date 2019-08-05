@@ -44,7 +44,11 @@ class user extends Component {
       <div>
         <Grid container spacing={10}>
           <Grid item sm={4} xs={12}>
-            <StaticProfile profile={this.state.profile} />
+            {this.state.profile === null ? (
+              <p>Loading...</p>
+            ) : (
+              <StaticProfile profile={this.state.profile} />
+            )}
           </Grid>
           <Grid item sm={8} xs={12} className="animated fadeIn">
             {postsMarkup}
