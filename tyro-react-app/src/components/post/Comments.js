@@ -31,7 +31,6 @@ const styles = {
 class Comments extends Component {
   render() {
     const { classes, comments } = this.props;
-    console.log(comments);
     return (
       <Grid container>
         {comments.map((comment, index) => {
