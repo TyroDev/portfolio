@@ -10,7 +10,7 @@ import {
   SET_ERRORS,
   CLEAR_ERRORS,
   STOP_LOADING_UI,
-  SUBMIT_COMMENT,
+  SUBMIT_COMMENT
 } from "../types";
 import axios from "axios";
 
@@ -124,6 +124,25 @@ export const deletePost = postId => dispatch => {
       });
     })
     .catch(err => console.log(err));
+};
+
+// Get User data
+export const getUserDataAction = userHandle => dispatch => {
+  dispatch({ type: LOADING_DATA });
+  axios
+    .get(`/user/${userHandle}`)
+    .then(res => {
+      dispatch({
+        type: SET_POSTS,
+        payload: res.data.posts
+      });
+    })
+    .catch(() => {
+      dispatch({
+        type: SET_POSTS,
+        payload: null
+      })
+    });
 };
 
 // Clear posting errors
