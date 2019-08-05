@@ -16,7 +16,7 @@ import {
 const styles = {
   textField: {},
   submitButton: {
-    margin: "auto auto",
+    margin: "30px auto 10px auto",
     textAlign: "center",
     "& a": {
       margin: "20px 10px"
@@ -93,7 +93,7 @@ class CommentForm extends Component {
 CommentForm.propTypes = {
   submitComment: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
-  clases: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
   postId: PropTypes.string.isRequired,
   authenticated: PropTypes.bool.isRequired
 };
