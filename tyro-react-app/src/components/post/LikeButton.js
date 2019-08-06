@@ -44,7 +44,7 @@ class LikeButton extends Component {
       </Link>
     ) : this.likedPost() ? (
       <MyButton tip="Unlike" onClick={this.unlikePost}>
-        <FavoriteIcon color="primary" />
+        <FavoriteIcon color="secondary" />
       </MyButton>
     ) : (
       <MyButton tip="Like" onClick={this.likePost}>

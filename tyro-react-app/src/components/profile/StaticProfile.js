@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
 // MUI stuff:
-import { withStyles, Paper, Typography, CardMedia } from "@material-ui/core";
+import { withStyles, Paper, Typography } from "@material-ui/core";
 import MuiLink from "@material-ui/core/Link";
 import { LocationOn, CalendarToday } from "@material-ui/icons";
 import LinkIcon from "@material-ui/icons/Link";

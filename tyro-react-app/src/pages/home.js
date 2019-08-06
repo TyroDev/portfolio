@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Post from "../components/post/Post";
 import Profile from "../components/profile/Profile";
+import PostSkeleton from '../util/PostSkeleton';
 
 import Grid from "@material-ui/core/Grid";
 
@@ -19,7 +20,7 @@ export class home extends Component {
     let recentPostsMarkup = !loading ? (
       posts.map((post) => <Post key={post.postId} post={post} />)
     ) : (
-      <p>Loading...</p>
+      <PostSkeleton />
     );
     return (
       <div>

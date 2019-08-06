@@ -125,7 +125,7 @@ class Profile extends Component {
                 onClick={this.handleLogout}
                 btnClassName="logout"
               >
-                <KeyboardReturn color="primary" />
+                <KeyboardReturn color="textSecondary" />
               </MyButton>
               <img className="profile-image" src={imageUrl} alt="profile" />
               <input

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Post from "../components/post/Post";
 import axios from "axios";
 import StaticProfile from "../components/profile/StaticProfile";
+import PostSkeleton from '../util/PostSkeleton';
 
 import Grid from "@material-ui/core/Grid";
 
@@ -39,7 +40,7 @@ class user extends Component {
     const { postIdParam } = this.state;
 
     const postsMarkup = loading ? (
-      <p>Loading data...</p>
+      <PostSkeleton />
     ) : posts === null ? (
       <p>No posts from this user</p>
     ) : !postIdParam ? (
